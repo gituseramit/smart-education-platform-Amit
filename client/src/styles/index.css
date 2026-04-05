@@ -1,0 +1,800 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Auth Pages — Premium Glassmorphism Styles ===== */
+
+:root {
+  --auth-bg: #0f0b1e;
+  --auth-card-bg: rgba(255, 255, 255, 0.05);
+  --auth-card-border: rgba(255, 255, 255, 0.08);
+  --auth-text: #e2e8f0;
+  --auth-text-muted: #94a3b8;
+  --auth-accent: #6366f1;
+  --auth-accent-hover: #818cf8;
+  --auth-input-bg: rgba(255, 255, 255, 0.06);
+  --auth-input-border: rgba(255, 255, 255, 0.1);
+  --auth-input-focus: rgba(99, 102, 241, 0.5);
+  --auth-error: #f87171;
+  --auth-success: #10b981;
+}
+
+/* Page wrapper */
+.auth-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: var(--auth-bg);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background gradient */
+.auth-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.25), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(139, 92, 246, 0.15), transparent),
+    radial-gradient(ellipse 40% 30% at 10% 80%, rgba(59, 130, 246, 0.1), transparent);
+  pointer-events: none;
+}
+
+/* Floating orbs */
+.auth-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  animation: auth-float 8s ease-in-out infinite;
+}
+
+.auth-bg-orb-1 {
+  width: 320px;
+  height: 320px;
+  background: rgba(99, 102, 241, 0.2);
+  top: -60px;
+  right: -80px;
+  animation-delay: -2s;
+}
+
+.auth-bg-orb-2 {
+  width: 260px;
+  height: 260px;
+  background: rgba(139, 92, 246, 0.15);
+  bottom: -40px;
+  left: -60px;
+  animation-delay: -5s;
+}
+
+@keyframes auth-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(15px, -20px) scale(1.05); }
+  66% { transform: translate(-10px, 10px) scale(0.97); }
+}
+
+/* Card */
+.auth-card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: var(--auth-card-bg);
+  border: 1px solid var(--auth-card-border);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 20px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  z-index: 1;
+}
+
+.auth-card-wide {
+  max-width: 520px;
+}
+
+/* Fade-in animation */
+.auth-fade-in {
+  animation: auth-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes auth-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.auth-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.auth-logo {
+  display: inline-flex;
+  margin-bottom: 1rem;
+}
+
+.auth-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.4rem;
+  letter-spacing: -0.025em;
+}
+
+.auth-subtitle {
+  font-size: 0.875rem;
+  color: var(--auth-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Error banner */
+.auth-error-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  color: var(--auth-error);
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  margin-bottom: 1.25rem;
+  animation: auth-shake 0.4s ease-in-out;
+}
+
+@keyframes auth-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* Form */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Field */
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.auth-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--auth-text);
+  letter-spacing: 0.01em;
+}
+
+.auth-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-link-sm {
+  font-size: 0.78rem;
+  color: var(--auth-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.auth-link-sm:hover {
+  color: var(--auth-accent-hover);
+}
+
+.auth-optional {
+  font-weight: 400;
+  color: var(--auth-text-muted);
+  font-size: 0.78rem;
+}
+
+/* Input wrapper */
+.auth-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--auth-input-bg);
+  border: 1px solid var(--auth-input-border);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.auth-input-wrapper:focus-within {
+  border-color: var(--auth-input-focus);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.auth-input-error {
+  border-color: var(--auth-error) !important;
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.12) !important;
+}
+
+.auth-input-icon {
+  margin-left: 0.85rem;
+  color: var(--auth-text-muted);
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.auth-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.9rem;
+  color: #ffffff;
+  font-family: inherit;
+}
+
+.auth-input::placeholder {
+  color: rgba(148, 163, 184, 0.5);
+}
+
+/* Password toggle */
+.auth-toggle-pw {
+  background: none;
+  border: none;
+  color: var(--auth-text-muted);
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  transition: color 0.2s;
+}
+
+.auth-toggle-pw:hover {
+  color: var(--auth-text);
+}
+
+/* Field error */
+.auth-field-error {
+  font-size: 0.76rem;
+  color: var(--auth-error);
+  padding-left: 0.25rem;
+}
+
+/* Submit button */
+.auth-submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(135deg, var(--auth-accent), #8b5cf6);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.auth-submit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.auth-submit-btn:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.auth-submit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+}
+
+.auth-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.auth-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Spinner */
+.auth-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: auth-spin 0.6s linear infinite;
+}
+
+@keyframes auth-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Footer text */
+.auth-footer-text {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--auth-text-muted);
+  margin-top: 1.5rem;
+}
+
+.auth-link {
+  color: var(--auth-accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.auth-link:hover {
+  color: var(--auth-accent-hover);
+}
+
+/* Row layout (side by side) */
+.auth-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 500px) {
+  .auth-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Role cards */
+.auth-role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+.auth-role-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.8rem 0.5rem;
+  background: var(--auth-input-bg);
+  border: 1.5px solid var(--auth-input-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.auth-role-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.auth-role-active {
+  border-color: var(--auth-accent) !important;
+  background: rgba(99, 102, 241, 0.12) !important;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.auth-role-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.auth-role-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.auth-role-label {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--auth-text);
+}
+
+/* Success box */
+.auth-success-box {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.auth-success-icon {
+  margin-bottom: 1rem;
+}
+
+.auth-success-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+}
+
+.auth-success-desc {
+  font-size: 0.875rem;
+  color: var(--auth-text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Reset link box (dev mode) */
+.auth-reset-link-box {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 10px;
+  text-align: left;
+}
+
+.auth-reset-link-label {
+  font-size: 0.75rem;
+  color: var(--auth-text-muted);
+  margin: 0 0 0.4rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.auth-reset-link {
+  font-size: 0.82rem;
+  color: var(--auth-accent);
+  word-break: break-all;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-reset-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+
+/* ═══════════════════════════════════════════════════════════════════
+   GLOBAL DARK THEME — Form & Input Consistency Override
+   Fixes ALL white/light boxes across the entire portal site-wide.
+   Targets every Tailwind white-background input/modal pattern.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── CSS Design Tokens ── */
+:root {
+  --dt-bg-base:       #0a0a15;   /* deepest background */
+  --dt-bg-elevated:   #111122;   /* panels, cards */
+  --dt-bg-input:      #1a1a2e;   /* input / textarea surface */
+  --dt-bg-input-2:    #23233a;   /* slightly lighter variant */
+  --dt-border:        rgba(90,90,140,0.35);
+  --dt-border-focus:  rgba(124,58,237,0.7);
+  --dt-glow-focus:    rgba(124,58,237,0.15);
+  --dt-text:          #f1f5f9;   /* primary text */
+  --dt-text-muted:    #94a3b8;   /* placeholder / secondary */
+  --dt-text-label:    #cbd5e1;   /* labels */
+  --dt-accent:        #7c3aed;   /* purple primary */
+  --dt-accent-light:  #a78bfa;   /* purple highlight */
+  --dt-teal:          #34d399;   /* teal accent */
+  --dt-error:         #f87171;
+  --dt-success:       #4ade80;
+}
+
+/* ─────────────────────────────────────────────
+   1. GLOBAL INPUT / TEXTAREA / SELECT RESET
+   Replaces bg-white + border-gray-* everywhere
+   ───────────────────────────────────────────── */
+
+input:not(.auth-input):not([type="range"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+textarea:not(.auth-input),
+select:not(.auth-input) {
+  background-color: var(--dt-bg-input) !important;
+  color: var(--dt-text) !important;
+  border-color: var(--dt-border) !important;
+  border-radius: 10px;
+  outline: none !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  font-family: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+input:not(.auth-input):not([type="range"]):not([type="checkbox"]):not([type="radio"]):not([type="file"])::placeholder,
+textarea:not(.auth-input)::placeholder {
+  color: var(--dt-text-muted) !important;
+  opacity: 1;
+}
+
+input:not(.auth-input):focus,
+textarea:not(.auth-input):focus,
+select:not(.auth-input):focus {
+  border-color: var(--dt-border-focus) !important;
+  box-shadow: 0 0 0 3px var(--dt-glow-focus), inset 0 2px 6px rgba(0,0,0,0.25) !important;
+  background-color: var(--dt-bg-input-2) !important;
+}
+
+/* Select dropdown option background */
+select option { background: var(--dt-bg-input); color: var(--dt-text); }
+
+/* ─────────────────────────────────────────────
+   2. TAILWIND CLASS OVERRIDES
+   Kills bg-white, bg-gray-50, bg-gray-100,
+   text-gray-900 on form elements
+   ───────────────────────────────────────────── */
+
+/* Panels/Cards that hold forms */
+.bg-white { background-color: var(--dt-bg-elevated) !important; }
+.bg-gray-50,
+.bg-gray-100 { background-color: var(--dt-bg-input) !important; }
+
+/* Text color overrides inside dark panels */
+.text-gray-900,
+.text-gray-800 { color: var(--dt-text) !important; }
+.text-gray-700,
+.text-gray-600 { color: var(--dt-text-label) !important; }
+.text-gray-500,
+.text-gray-400 { color: var(--dt-text-muted) !important; }
+
+/* Border overrides */
+.border-gray-100,
+.border-gray-200,
+.border-gray-300 { border-color: var(--dt-border) !important; }
+
+/* Focus ring overrides */
+.focus\:ring-primary-500:focus,
+.focus\:ring-indigo-500:focus,
+.focus\:ring-2:focus {
+  box-shadow: 0 0 0 3px var(--dt-glow-focus) !important;
+}
+.focus\:border-primary-500:focus,
+.focus\:border-indigo-500:focus {
+  border-color: var(--dt-border-focus) !important;
+}
+.focus\:bg-white:focus { background-color: var(--dt-bg-input-2) !important; }
+
+/* ─────────────────────────────────────────────
+   3. MODALS / POPUPS / OVERLAYS
+   Any absolutely-positioned white card
+   ───────────────────────────────────────────── */
+
+.modal-overlay,
+[role="dialog"],
+[class*="modal"],
+[class*="popup"],
+[class*="dialog"] {
+  background-color: rgba(0,0,0,0.75) !important;
+  backdrop-filter: blur(8px);
+}
+
+/* Centered modal card (typically bg-white rounded-*) */
+[role="dialog"] > .bg-white,
+[role="dialog"] > div > .bg-white,
+[class*="modal"] .bg-white {
+  background-color: var(--dt-bg-elevated) !important;
+  border: 1px solid var(--dt-border);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.6) !important;
+}
+
+/* ─────────────────────────────────────────────
+   4. SEARCH BARS (resources, mentors, etc.)
+   ───────────────────────────────────────────── */
+
+[class*="search"] input,
+[class*="SearchBar"] input,
+input[type="search"],
+input[placeholder*="Search"],
+input[placeholder*="search"] {
+  background: var(--dt-bg-input) !important;
+  color: var(--dt-text) !important;
+  border-color: var(--dt-border) !important;
+}
+
+/* ─────────────────────────────────────────────
+   5. RESOURCE UPLOAD FORMS
+   ───────────────────────────────────────────── */
+
+/* Dashed drop zone */
+[class*="border-dashed"] {
+  background: rgba(26,26,46,0.6) !important;
+  border-color: rgba(90,90,140,0.5) !important;
+}
+[class*="border-dashed"]:hover {
+  background: rgba(26,26,46,0.85) !important;
+  border-color: rgba(124,58,237,0.5) !important;
+}
+
+/* Error/success banners */
+.bg-red-50    { background: rgba(248,113,113,0.1) !important; }
+.bg-emerald-50 { background: rgba(74,222,128,0.1) !important; }
+.bg-primary-50 { background: rgba(124,58,237,0.1) !important; }
+.text-red-600  { color: var(--dt-error) !important; }
+.text-emerald-700 { color: var(--dt-success) !important; }
+.border-red-100 { border-color: rgba(248,113,113,0.25) !important; }
+.border-emerald-100 { border-color: rgba(74,222,128,0.25) !important; }
+
+/* Type selector buttons (PDF/Note/Link) */
+.border-gray-200.bg-white {
+  background: rgba(26,26,46,0.6) !important;
+  border-color: var(--dt-border) !important;
+  color: var(--dt-text-muted) !important;
+}
+.border-gray-200.bg-white:hover {
+  background: rgba(26,26,46,0.85) !important;
+  border-color: rgba(124,58,237,0.5) !important;
+}
+
+/* ─────────────────────────────────────────────
+   6. CHAT WINDOWS (AI Tutor, Community, Chat)
+   ───────────────────────────────────────────── */
+
+/* Chat container */
+.bg-white.rounded-xl,
+.bg-white.rounded-2xl {
+  background: var(--dt-bg-elevated) !important;
+  border: 1px solid var(--dt-border);
+}
+
+/* AI/bot message bubbles (gray-100) */
+.bg-gray-100 { background: rgba(35,35,60,0.8) !important; color: var(--dt-text) !important; }
+
+/* Bottom border separator above chat input */
+.border-t { border-top-color: var(--dt-border) !important; }
+
+/* ─────────────────────────────────────────────
+   7. PROFILE EDIT FIELDS / FORM CARDS
+   ───────────────────────────────────────────── */
+
+.rounded-2xl.bg-white,
+.rounded-3xl.bg-white,
+.rounded-xl.bg-white {
+  background: var(--dt-bg-elevated) !important;
+  border: 1px solid var(--dt-border);
+  color: var(--dt-text);
+}
+
+/* Labels inside forms */
+label.text-gray-700,
+label.text-gray-600 { color: var(--dt-text-label) !important; }
+
+/* ─────────────────────────────────────────────
+   8. FILTER / DROPDOWN COMPONENTS
+   (Internships, Mentors, Resources)
+   ───────────────────────────────────────────── */
+
+[class*="Filter"] select,
+[class*="filter"] select,
+select.rounded-lg,
+select.rounded-xl {
+  background: var(--dt-bg-input) !important;
+  color: var(--dt-text) !important;
+  border-color: var(--dt-border) !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.5rem;
+}
+
+/* ─────────────────────────────────────────────
+   9. INTERNSHIP CARDS / MENTOR CARDS
+   ───────────────────────────────────────────── */
+
+.shadow-sm.bg-white,
+.shadow.bg-white,
+.shadow-md.bg-white,
+.shadow-lg.bg-white,
+.shadow-xl.bg-white {
+  background: var(--dt-bg-elevated) !important;
+  border: 1px solid var(--dt-border) !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35) !important;
+  color: var(--dt-text) !important;
+}
+
+/* ─────────────────────────────────────────────
+   10. CANCEL / SECONDARY BUTTONS
+   ───────────────────────────────────────────── */
+
+button.bg-gray-50,
+button.bg-gray-100,
+.btn-secondary,
+[class*="btn"].bg-gray-50,
+[class*="btn"].bg-gray-100 {
+  background: rgba(35,35,60,0.7) !important;
+  color: var(--dt-text-muted) !important;
+  border: 1px solid var(--dt-border) !important;
+}
+button.bg-gray-50:hover,
+button.bg-gray-100:hover {
+  background: rgba(55,55,90,0.8) !important;
+  color: var(--dt-text) !important;
+}
+
+/* ─────────────────────────────────────────────
+   11. TABLES (SessionsTable, AdminPanel, etc.)
+   ───────────────────────────────────────────── */
+
+table { border-collapse: collapse; }
+thead.bg-gray-50,
+thead.bg-gray-100,
+th.bg-gray-50 { background: rgba(20,20,40,0.8) !important; color: var(--dt-text-label) !important; }
+tbody tr.bg-white { background: var(--dt-bg-elevated) !important; }
+tbody tr:hover { background: rgba(35,35,60,0.6) !important; }
+td, th { border-color: var(--dt-border) !important; color: var(--dt-text) !important; }
+
+/* ─────────────────────────────────────────────
+   12. DATE PICKERS / TIME INPUTS
+   ───────────────────────────────────────────── */
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"] {
+  background: var(--dt-bg-input) !important;
+  color: var(--dt-text) !important;
+  border-color: var(--dt-border) !important;
+  color-scheme: dark;
+}
+
+/* ─────────────────────────────────────────────
+   13. MENTORSHIP REQUEST / BOOKING FORMS
+   ───────────────────────────────────────────── */
+
+.space-y-4 label,
+.space-y-6 label { color: var(--dt-text-label) !important; }
+.space-y-4 .text-gray-500,
+.space-y-6 .text-gray-500 { color: var(--dt-text-muted) !important; }
+
+/* ─────────────────────────────────────────────
+   14. CUSTOM SCROLLBAR (dark-theme)
+   ───────────────────────────────────────────── */
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(124,58,237,0.35); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(124,58,237,0.6); }
+
+/* ─────────────────────────────────────────────
+   15. MISC ELEVATION HELPERS
+   Use on any remaining white card via class
+   ───────────────────────────────────────────── */
+
+.dark-card {
+  background: var(--dt-bg-elevated);
+  border: 1px solid var(--dt-border);
+  border-radius: 16px;
+  color: var(--dt-text);
+}
+
+.dark-input {
+  background: var(--dt-bg-input) !important;
+  color: var(--dt-text) !important;
+  border: 1.5px solid var(--dt-border) !important;
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  width: 100%;
+  outline: none;
+  font-family: inherit;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.dark-input::placeholder { color: var(--dt-text-muted); }
+.dark-input:focus {
+  border-color: var(--dt-border-focus) !important;
+  box-shadow: 0 0 0 3px var(--dt-glow-focus);
+}

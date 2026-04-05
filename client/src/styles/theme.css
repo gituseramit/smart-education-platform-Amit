@@ -1,0 +1,161 @@
+/** 
+ * Smart Education Platform Design System
+ * --------------------------------
+ * Premium, light-themed aesthetic for educational success.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Core Colors */
+  --cs-bg: #f8fafc;
+  --cs-surface: #ffffff;
+  --cs-primary: #1e40af;
+  --cs-primary-hover: #1d4ed8;
+  --cs-accent-wellness: #10b981;
+  --cs-accent-wellness-light: #f0fdf4;
+  --cs-accent-highlight: #3b82f6;
+  --cs-accent-highlight-light: #eff6ff;
+  
+  /* Text Colors */
+  --cs-text-main: #111827;
+  --cs-text-muted: #64748b;
+  --cs-text-light: #94a3af;
+  
+  /* Borders & Shadows */
+  --cs-border: #e2e8f0;
+  --cs-shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --cs-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --cs-shadow-premium: 0 20px 50px -15px rgba(0,0,0,0.04);
+  
+  /* Sidebar Specific */
+  --cs-sidebar-width: 280px;
+  --cs-sidebar-bg: #ffffff;
+  --cs-sidebar-active: #f1f5f9;
+  --cs-sidebar-text: #64748b;
+  --cs-sidebar-text-active: #1e40af;
+}
+
+/* Global Style Overrides */
+body {
+  background-color: var(--cs-bg) !important;
+  color: var(--cs-text-main) !important;
+  font-family: 'Outfit', sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cs-card {
+  background-color: var(--cs-surface);
+  border: 1.5px solid var(--cs-border);
+  border-radius: 32px;
+  padding: 2rem;
+  box-shadow: var(--cs-shadow-premium);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cs-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--cs-primary);
+  box-shadow: 0 25px 60px -20px rgba(30, 64, 185, 0.08);
+}
+
+.cs-button-primary {
+  background-color: var(--cs-primary);
+  color: #ffffff;
+  padding: 0.9rem 1.75rem;
+  border-radius: 16px;
+  font-weight: 800;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  box-shadow: 0 10px 20px -5px rgba(30, 64, 185, 0.2);
+}
+
+.cs-button-primary:hover {
+  background-color: var(--cs-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(30, 64, 185, 0.3);
+}
+
+.cs-button-primary:active {
+  transform: translateY(0);
+}
+
+.cs-badge {
+  padding: 0.4rem 1rem;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cs-badge-success {
+  background-color: var(--cs-accent-wellness-light);
+  color: var(--cs-accent-wellness);
+  border: 1px solid #d1fae5;
+}
+
+.cs-badge-blue {
+  background-color: var(--cs-accent-highlight-light);
+  color: var(--cs-primary);
+  border: 1px solid #dbeafe;
+}
+
+/* Sidebar Navigation Styles */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 18px;
+  color: var(--cs-sidebar-text);
+  font-weight: 700;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin: 0.25rem 0.75rem;
+}
+
+.nav-item:hover {
+  background-color: #f8fafc;
+  color: var(--cs-text-main);
+  transform: translateX(4px);
+}
+
+.nav-item.active {
+  background-color: var(--cs-sidebar-active);
+  color: var(--cs-sidebar-text-active);
+  box-shadow: inset 0 0 0 1px var(--cs-border);
+}
+
+.pro-card {
+  background: linear-gradient(135deg, #1e40af, #4f46e5);
+  color: white;
+  padding: 2rem;
+  border-radius: 28px;
+  margin: 1.5rem;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(30, 64, 185, 0.2);
+}
+
+.pro-button {
+  background-color: #ffffff;
+  color: #1e40af;
+  padding: 0.75rem 1.25rem;
+  border-radius: 14px;
+  font-weight: 800;
+  margin-top: 1.5rem;
+  display: block;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.pro-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
